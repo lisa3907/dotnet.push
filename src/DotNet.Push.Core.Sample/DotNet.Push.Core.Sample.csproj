@@ -8,13 +8,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="jose-jwt" Version="2.2.0" />
-    <PackageReference Include="Newtonsoft.Json" Version="10.0.1" />
-    <PackageReference Include="System.Net.Http.WinHttpHandler" Version="4.3.0" />
-    <PackageReference Include="System.ValueTuple" Version="4.3.0" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\DotNet.Push.Core\DotNet.Push.Core.csproj" />
   </ItemGroup>
 
