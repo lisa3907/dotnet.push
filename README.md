@@ -25,6 +25,6 @@ Visual Studio 2017(.NetCoreApp 1.1)
 ```
 
 
-### [Apple 개발자 사이트 참조](https://github.com/lisa3907/JwtAPNsDotNetCore/blob/master/communicate_apns.md)
-### [인증키 생성 방법 설명](https://github.com/lisa3907/JwtAPNsDotNetCore/blob/master/generate_auth_key.md)
-### [닷넷코어용 HTTP/2 사용 방법](https://github.com/lisa3907/JwtAPNsDotNetCore/blob/master/http2handler.md)
+[Apple 개발자 사이트 참조](https://github.com/lisa3907/DotnetPush/blob/master/communicate_apns.md)
+[인증키 생성 방법 설명](https://github.com/lisa3907/DotnetPush/blob/master/generate_auth_key.md)
+[닷넷코어용 HTTP/2 사용 방법](https://github.com/lisa3907/DotnetPush/blob/master/http2handler.md)
