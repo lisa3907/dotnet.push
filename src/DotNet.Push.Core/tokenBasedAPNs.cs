@@ -13,7 +13,8 @@ namespace DotNet.Push.Core
     {
         private string Algorithm { get; } = "ES256";
 
-        private string HostUrl { get; } = "api.development.push.apple.com";
+        private string DevelopmentServer { get; } = "api.development.push.apple.com";
+        private string ProductionServer { get; } = "api.push.apple.com";
         private int HostPort { get; } = 443;
 
         private string APNsKeyId { get; set; }
@@ -117,15 +118,16 @@ namespace DotNet.Push.Core
         }
 
         /// <summary>
-        /// Token Based Authentication APNs 푸시
+        /// Token Based Authentication APNs push
         /// </summary>
         /// <param name="device_token">device token</param>
-        /// <param name="message">푸시 메시지</param>
-        /// <param name="badge">배지 번호</param>
-        /// <param name="sound">사운드 파일 이름</param>
-        public async Task<(bool result, string message)> JwtAPNsPush(string device_token, string message, int badge, string sound)
+        /// <param name="message">push message</param>
+        /// <param name="badge">badge number</param>
+        /// <param name="sound">sound file name</param>
+        /// <param name="production">development or production</param>
+        public async Task<(bool result, string message)> JwtAPNsPush(string device_token, string message, int badge, string sound, bool production = false)
         {
-            var _host_uri = new Uri(string.Format("https://{0}:{1}/3/device/{2}", HostUrl, HostPort, device_token));
+            var _host_uri = new Uri($"https://{(production ? ProductionServer : DevelopmentServer)}:{HostPort}/3/device/{device_token}");
 
             var _access_token = "";
             {
