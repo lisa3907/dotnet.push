@@ -7,8 +7,8 @@
     <ProjectGuid>{F015FD84-B43F-49F8-89EB-D059A92844E0}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>JwtAPNs</RootNamespace>
-    <AssemblyName>JwtAPNs</AssemblyName>
+    <RootNamespace>dotnet.push.sample</RootNamespace>
+    <AssemblyName>dotnet.push.sample</AssemblyName>
     <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -35,21 +35,19 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="HttpTwo, Version=1.0.5858.36836, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\HttpTwo.0.0.1.19\lib\net45\HttpTwo.dll</HintPath>
-      <Private>True</Private>
+      <HintPath>..\..\packages\HttpTwo.0.0.1.19\lib\net45\HttpTwo.dll</HintPath>
     </Reference>
     <Reference Include="HttpTwo.HPack, Version=1.0.5858.36836, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\HttpTwo.0.0.1.19\lib\net45\HttpTwo.HPack.dll</HintPath>
-      <Private>True</Private>
+      <HintPath>..\..\packages\HttpTwo.0.0.1.19\lib\net45\HttpTwo.HPack.dll</HintPath>
     </Reference>
     <Reference Include="jose-jwt, Version=2.2.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\jose-jwt.2.2.0\lib\net461\jose-jwt.dll</HintPath>
+      <HintPath>..\..\packages\jose-jwt.2.2.0\lib\net461\jose-jwt.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Win32.Primitives, Version=4.0.2.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Microsoft.Win32.Primitives.4.3.0\lib\net46\Microsoft.Win32.Primitives.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.10.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <HintPath>..\..\packages\Newtonsoft.Json.10.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -83,13 +81,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="tokenBasedAPNs.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DotNet.Push\DotNet.Push.csproj">
+      <Project>{89e1e13d-9315-452b-a10e-3bd49353d57f}</Project>
+      <Name>DotNet.Push</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

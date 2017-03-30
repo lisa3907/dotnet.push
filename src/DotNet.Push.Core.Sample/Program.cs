@@ -1,8 +1,8 @@
 ﻿using System;
 
-namespace JwtAPNs
+namespace DotNet.Push.Core.Sample
 {
-    public class Program
+    class Program
     {
         static void Main(string[] args)
         {
@@ -15,6 +15,5 @@ namespace JwtAPNs
             Console.WriteLine($"result: {_result.result}, '{_result.message}'");
             Console.ReadLine();
         }
-
     }
 }

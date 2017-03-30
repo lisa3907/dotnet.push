@@ -8,7 +8,7 @@ using HttpTwo;
 using Jose;
 using Newtonsoft.Json.Linq;
 
-namespace JwtAPNs
+namespace DotNet.Push
 {
     public class TokenBasedAPNs
     {
@@ -36,7 +36,6 @@ namespace JwtAPNs
             TeamId = team_id;
             BundleAppId = app_id;
 
-            // 다운로드 읽기 암호화 된 개인 키 (.p8)
             var _private_key_content = System.IO.File.ReadAllText(auth_key_path);
             var _private_key = _private_key_content.Split('\n')[1];
 

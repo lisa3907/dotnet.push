@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using Jose;
 using Newtonsoft.Json.Linq;
 
-namespace JwtAPNs.Core
+namespace DotNet.Push.Core
 {
     public class TokenBasedAPNs
     {

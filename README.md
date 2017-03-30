@@ -1,8 +1,5 @@
-# JwtAPNsDotNetCore
+# DotNetPush
 
-원본: [MonkeyBinBin님이 만든것을 fork해서 수정 하였습니다](https://github.com/MonkeyBinBin/TokenbasedAPNsSample)
-
-.net core 용으로 재 작성 하였습니다.
 
 ## JwtAPNs:
 

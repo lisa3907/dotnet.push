@@ -2,7 +2,7 @@
 using System.Net.Http;
 using System.Threading.Tasks;
 
-namespace JwtAPNs.Core
+namespace DotNet.Push.Core
 {
     public class Http2CustomHandler : WinHttpHandler
     {
