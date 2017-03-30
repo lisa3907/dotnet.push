@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Net;
 using System.Net.Http;
+using System.Net.Http.Headers;
+using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 
@@ -80,16 +82,24 @@ namespace DotNet.Push.Core
 
                 var _request = new HttpRequestMessage(HttpMethod.Post, "https://fcm.googleapis.com/fcm/send");
                 {
-                    _request.Headers.Add("Authorization", $"key {FCMServerApiKey}");
-                    _request.Headers.Add("Sender", $"id {FCMServerId}");
-                    _request.Headers.Add("ContentType", $"application/json");
-                    _request.Content = new StringContent(_content);
+                    _request.Headers.Authorization = new AuthenticationHeaderValue("key", FCMServerApiKey);
+                    _request.Content = new StringContent(_content, Encoding.UTF8, "application/json");
                 }
 
-                var _client = new HttpClient();
-                var _response = await _client.SendAsync(_request);
+                using (var _client = new HttpClient())
+                {
+                    _client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("key", FCMServerApiKey);
+                    var _http_content = new StringContent(_content, Encoding.UTF8, "application/json");
 
-                this.Successful = _response.StatusCode == HttpStatusCode.OK;
+                    var httpResponse = await _client.PostAsync("https://fcm.googleapis.com/fcm/send", _http_content);
+                    if (httpResponse.Content != null)
+                    {
+                        // Error Here
+                        var responseContent = await httpResponse.Content.ReadAsStringAsync();
+                    }
+
+                    this.Successful = httpResponse.StatusCode == HttpStatusCode.OK;
+                }
             }
             catch (Exception ex)
             {
