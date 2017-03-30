@@ -6,8 +6,10 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{C3402294-C352-4F8A-85A9-7D4DCBF34011}"
 	ProjectSection(SolutionItems) = preProject
 		communicate_apns.md = communicate_apns.md
+		CONTRIBUTING.md = CONTRIBUTING.md
 		generate_auth_key.md = generate_auth_key.md
 		http2handler.md = http2handler.md
+		LICENSE = LICENSE
 		README.md = README.md
 	EndProjectSection
 EndProject

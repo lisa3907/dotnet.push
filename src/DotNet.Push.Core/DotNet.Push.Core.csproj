@@ -23,9 +23,20 @@
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <Version>1.0.1</Version>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="eventAlarm.cs" />
+    <Compile Remove="pushNotifyFCM - 복사.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="eventAlarm.cs" />
+    <None Include="pushNotifyFCM - 복사.cs" />
+  </ItemGroup>
   
   <ItemGroup>
     <PackageReference Include="jose-jwt" Version="2.2.0" />
+    <PackageReference Include="Microsoft.Net.Http.Headers" Version="1.1.1" />
     <PackageReference Include="Newtonsoft.Json" Version="10.0.1" />
     <PackageReference Include="System.Net.Http.WinHttpHandler" Version="4.3.0" />
     <PackageReference Include="System.ValueTuple" Version="4.3.0" />
