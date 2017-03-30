@@ -80,6 +80,7 @@ namespace DotNet.Push.Core
 
                 var _content = JsonConvert.SerializeObject(_push);
 
+                /*
                 var _request = new HttpRequestMessage(HttpMethod.Post, "https://fcm.googleapis.com/fcm/send");
                 {
                     _request.Headers.Authorization = new AuthenticationHeaderValue("key", FCMServerApiKey);
@@ -99,6 +100,21 @@ namespace DotNet.Push.Core
                     }
 
                     this.Successful = httpResponse.StatusCode == HttpStatusCode.OK;
+                }
+                */
+
+                using (var client = new HttpClient())
+                {
+                    var request = new HttpRequestMessage
+                    {
+                        RequestUri = new Uri("https://fcm.googleapis.com/fcm/send"),
+                        Method = HttpMethod.Post
+                    };
+
+                    request.Content = new StringContent(_content, Encoding.UTF8, "application/json");
+
+                    var result = await client.SendAsync(request);
+                    this.Successful = result.StatusCode == HttpStatusCode.OK;
                 }
             }
             catch (Exception ex)
