@@ -9,19 +9,18 @@ using Newtonsoft.Json.Linq;
 
 namespace DotNet.Push.Core
 {
-    public class TokenBasedAPNs
+    public class IosPushNotifyAPNs
     {
-        private string Algorithm { get; } = "ES256";
+        public string Algorithm { get; }
 
-        private string DevelopmentServer { get; } = "api.development.push.apple.com";
-        private string ProductionServer { get; } = "api.push.apple.com";
-        private int HostPort { get; } = 443;
+        public string HostServerUrl { get; }
+        public int HostPort { get; }
 
-        private string APNsKeyId { get; set; }
-        private string TeamId { get; set; }
+        public string APNsKeyId { get; }
+        public string TeamId { get; }
 
-        private string BundleAppId { get; set; }
-        private CngKey PrivateKey { get; set; }
+        public string BundleAppId { get; }
+        public CngKey PrivateKey { get; }
 
         /// <summary>
         /// 
@@ -30,8 +29,17 @@ namespace DotNet.Push.Core
         /// <param name="team_id"></param>
         /// <param name="app_id"></param>
         /// <param name="auth_key_path"></param>
-        public TokenBasedAPNs(string key_id, string team_id, string app_id, string auth_key_path)
+        /// <param name="production"></param>
+        public IosPushNotifyAPNs(string key_id, string team_id, string app_id, string auth_key_path, string algorithm = "ES256", bool production = false, int port = 443)
         {
+            Algorithm = algorithm;
+            if (production == false)
+                HostServerUrl = "api.development.push.apple.com";
+            else
+                HostServerUrl = "api.push.apple.com";
+
+            HostPort = port;
+
             APNsKeyId = key_id;
             TeamId = team_id;
             BundleAppId = app_id;
@@ -124,9 +132,9 @@ namespace DotNet.Push.Core
         /// <param name="badge">badge number</param>
         /// <param name="sound">sound file name</param>
         /// <param name="production">development or production</param>
-        public async Task<(bool success, string message)> JwtAPNsPush(string device_token, string message, int badge, string sound, bool production = false)
+        public async Task<(bool success, string message)> JwtAPNsPush(string device_token, string message, int badge, string sound)
         {
-            var _host_uri = new Uri($"https://{(production ? ProductionServer : DevelopmentServer)}:{HostPort}/3/device/{device_token}");
+            var _host_uri = new Uri($"https://{HostServerUrl}:{HostPort}/3/device/{device_token}");
 
             var _access_token = "";
             {

@@ -10,7 +10,7 @@ using Newtonsoft.Json.Linq;
 
 namespace DotNet.Push
 {
-    public class TokenBasedAPNs
+    public class IosPushNotifyAPNs
     {
         private string Algorithm { get; } = "ES256";
 
@@ -30,7 +30,7 @@ namespace DotNet.Push
         /// <param name="team_id"></param>
         /// <param name="app_id"></param>
         /// <param name="auth_key_path"></param>
-        public TokenBasedAPNs(string key_id, string team_id, string app_id, string auth_key_path)
+        public IosPushNotifyAPNs(string key_id, string team_id, string app_id, string auth_key_path)
         {
             APNsKeyId = key_id;
             TeamId = team_id;
@@ -123,7 +123,7 @@ namespace DotNet.Push
         /// <param name="message">푸시 메시지</param>
         /// <param name="badge">배지 번호</param>
         /// <param name="sound">사운드 파일 이름</param>
-        public async Task<(bool result, string message)> JwtAPNsPush(string device_token, string message, int badge, string sound)
+        public async Task<(bool success, string message)> JwtAPNsPush(string device_token, string message, int badge, string sound)
         {
             var _host_uri = new Uri(string.Format("https://{0}:{1}/3/device/{2}", HostUrl, HostPort, device_token));
 

@@ -8,51 +8,87 @@ using Newtonsoft.Json;
 
 namespace DotNet.Push.Core
 {
-    public class PushNotifyFCM
+    public class DroidPushNotifyFCM
     {
-        public PushNotifyFCM(string server_api_key, string server_id)
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="server_api_key"></param>
+        /// <param name="server_id"></param>
+        /// <param name="alarm_tag">Android의 알림 창에 각 알림이 새로 입력되는지 여부를 나타냅니다.</param>
+        public DroidPushNotifyFCM(string server_api_key, string server_id, string alarm_tag)
         {
             FCMServerApiKey = server_api_key;
             FCMServerId = server_id;
+
+            AlarmTag = alarm_tag;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public string FCMServerApiKey
         {
             get;
             set;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public string FCMServerId
         {
             get;
             set;
         }
 
-        public async Task<(bool success, string message)> SendNotification(string device_token, string title, string message, int badge)
+        /// <summary>
+        /// 
+        /// </summary>
+        public string AlarmTag
+        {
+            get;
+            set;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="device_token"></param>
+        /// <param name="priority">high,normal</param>
+        /// <param name="title"></param>
+        /// <param name="click_action"></param>
+        /// <param name="message"></param>
+        /// <param name="badge"></param>
+        /// <param name="icon_name"></param>
+        /// <param name="color"></param>
+        /// <returns></returns>
+        public async Task<(bool success, string message)> SendNotification(string device_token, string priority, string title, string click_action, string message, int badge, string icon_name, string color)
         {
             (bool success, string message) _result = (false, "ok");
 
             try
             {
-                var _pusher = new PushProtocol();
+                var _pusher = new DroidPushProtocol();
                 {
                     _pusher.to = device_token;
-                    _pusher.priority = "high";
+                    _pusher.priority = priority;
 
-                    _pusher.notification = new Notification();
+                    _pusher.notification = new DroidNotification();
                     {
                         _pusher.notification.title = title;
-                        _pusher.notification.click_action = "PUSH_EVENT_ALARM";
-                        _pusher.notification.body = message;
-                        _pusher.notification.icon = "alarm";
-                        _pusher.notification.color = "#d32121";
-                        _pusher.notification.tag = "PUSH_EVENT_ALARM";
+                        _pusher.notification.click_action = click_action;
 
-                        _pusher.data = new NotifiData();
+                        _pusher.notification.body = message;
+                        _pusher.notification.icon = icon_name;
+                        _pusher.notification.color = color;
+                        _pusher.notification.tag = AlarmTag;
+
+                        _pusher.data = new DroidNotifyData();
                         {
                             _pusher.data.title = title;
                             _pusher.data.badge = badge;
-                            _pusher.data.text = message;
+                            _pusher.data.message = message;
                         }
                     }
                 }

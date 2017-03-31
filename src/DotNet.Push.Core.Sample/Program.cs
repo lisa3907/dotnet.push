@@ -6,11 +6,14 @@ namespace DotNet.Push.Core.Sample
     {
         static void Main(string[] args)
         {
+            var _test_phone = "IX";
+
             // IPHONE
+            if (_test_phone == "IA")
             {
-                var _apns = new TokenBasedAPNs("<key-id>", "<team-id>", "<app-id>", "<key-file-path>");
+                var _apns = new IosPushNotifyAPNs("<key-id>", "<team-id>", "<app-id>", "<key-file-path>");
                 var _result = _apns
-                                .JwtAPNsPush("<device-token>", "Json Web Token(JWT)을 이용한 Apple Push Notification Service", 1, "ping.aiff")
+                                .JwtAPNsPush("<device-token>", "Json Web Token(JWT): Apple Push Notification Service(APNs)", 1, "<sound>")
                                 .GetAwaiter()
                                 .GetResult();
 
@@ -18,10 +21,11 @@ namespace DotNet.Push.Core.Sample
             }
 
             // ANDROID
+            if (_test_phone == "AF")
             {
-                var _fcm = new PushNotifyFCM("<server-api-key>", "<server-id>");
+                var _fcm = new DroidPushNotifyFCM("<server-api-key>", "<server-id>", "<alarm-tag>");
                 var _result = _fcm
-                                .SendNotification("<to>", "<title>", "<message>", 0)
+                                .SendNotification("<to>", "<priority>", "<title>", "<click-action>", "<message>", 1, "<icon-name>", "<color>")
                                 .GetAwaiter()
                                 .GetResult();
 
