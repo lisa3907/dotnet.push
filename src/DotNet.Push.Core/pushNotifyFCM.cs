@@ -28,104 +28,62 @@ namespace DotNet.Push.Core
             set;
         }
 
-        public bool Successful
+        public async Task<(bool success, string message)> SendNotification(string device_token, string title, string message, int badge)
         {
-            get;
-            set;
-        }
+            (bool success, string message) _result = (false, "ok");
 
-        public string Response
-        {
-            get;
-            set;
-        }
-        public Exception Error
-        {
-            get;
-            set;
-        }
-
-        public async Task<bool> SendNotification(string title, string message, string topic)
-        {
             try
             {
-                //var _data = new
-                //{
-                //    // to = YOUR_FCM_DEVICE_ID, // Uncoment this if you want to test for single device
-                //    to = "/topics/" + topic, // this is for topic 
-                //    notification = new
-                //    {
-                //        title = title,
-                //        body = message,
-                //        //icon="myicon"
-                //    }
-                //};
-
-                var _push = new PushProtocol();
-                _push.to = "c1Rp3_jocws:APA91bHh5cpODs_F95hNYRx57fXXBS0efySmWsGE8XLlafvrMeEsLBN9KfkbjaGBxkHcqw1itG493Iwr2gXfzoL2grz8BaE80IpGWHr-xsHESCRSQs2382bdb2kB5SCNeSr8dyu4R2uO";
-                _push.priority = "high";
-                _push.notification = new Notification();
-                _push.notification.title = "IDTECKM3S";
-                _push.notification.click_action = "OPEN_ACTIVITY_1";
-                _push.notification.body = "새로운 이벤트가 발생되었습니다.";
-                _push.notification.icon = "alarm";
-                _push.notification.color = "#d32121";
-
-                _push.data = new NotifiData();
-                _push.data.badge = 1;
-                _push.data.title = "token test";
-
-                _push.data.sub = new SubData();
-                _push.data.sub.sub = "sub test";
-
-                var _content = JsonConvert.SerializeObject(_push);
-
-                /*
-                var _request = new HttpRequestMessage(HttpMethod.Post, "https://fcm.googleapis.com/fcm/send");
+                var _pusher = new PushProtocol();
                 {
-                    _request.Headers.Authorization = new AuthenticationHeaderValue("key", FCMServerApiKey);
-                    _request.Content = new StringContent(_content, Encoding.UTF8, "application/json");
-                }
+                    _pusher.to = device_token;
+                    _pusher.priority = "high";
 
-                using (var _client = new HttpClient())
-                {
-                    _client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("key", FCMServerApiKey);
-                    var _http_content = new StringContent(_content, Encoding.UTF8, "application/json");
-
-                    var httpResponse = await _client.PostAsync("https://fcm.googleapis.com/fcm/send", _http_content);
-                    if (httpResponse.Content != null)
+                    _pusher.notification = new Notification();
                     {
-                        // Error Here
-                        var responseContent = await httpResponse.Content.ReadAsStringAsync();
+                        _pusher.notification.title = title;
+                        _pusher.notification.click_action = "PUSH_EVENT_ALARM";
+                        _pusher.notification.body = message;
+                        _pusher.notification.icon = "alarm";
+                        _pusher.notification.color = "#d32121";
+                        _pusher.notification.tag = "PUSH_EVENT_ALARM";
+
+                        _pusher.data = new NotifiData();
+                        {
+                            _pusher.data.title = title;
+                            _pusher.data.badge = badge;
+                            _pusher.data.text = message;
+                        }
                     }
-
-                    this.Successful = httpResponse.StatusCode == HttpStatusCode.OK;
                 }
-                */
 
-                using (var client = new HttpClient())
+                var _content = JsonConvert.SerializeObject(_pusher);
+
+                using (var _http_client = new HttpClient())
                 {
-                    var request = new HttpRequestMessage
+                    var _request = new HttpRequestMessage
                     {
                         RequestUri = new Uri("https://fcm.googleapis.com/fcm/send"),
-                        Method = HttpMethod.Post
+                        Method = HttpMethod.Post,
+                        Content = new StringContent(_content, Encoding.UTF8, "application/json")
                     };
 
-                    request.Content = new StringContent(_content, Encoding.UTF8, "application/json");
+                    _request.Headers.Authorization = new AuthenticationHeaderValue("key" , "=" + FCMServerApiKey);
+                    _request.Headers.Add("Sender", "id=" + FCMServerId);
 
-                    var result = await client.SendAsync(request);
-                    this.Successful = result.StatusCode == HttpStatusCode.OK;
+                    var _response = await _http_client.SendAsync(_request);
+                    if (_response.StatusCode == HttpStatusCode.OK)
+                        _result.success = true;
+
+                    _result.message = _response.StatusCode.ToString();
                 }
             }
             catch (Exception ex)
             {
-                this.Successful = false;
-
-                this.Response = null;
-                this.Error = ex;
+                _result.message = ex.Message;
             }
 
-            return this.Successful;
+            return _result;
         }
     }
 }

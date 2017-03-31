@@ -59,10 +59,9 @@ namespace DotNet.Push.Core
         /// <param name="access_token"></param>
         /// <param name="payload_bytes"></param>
         /// <returns></returns>
-        private async Task<(bool result, string message)> JwtAPNsPush(Uri host_uri, string access_token, byte[] payload_bytes)
+        private async Task<(bool success, string message)> JwtAPNsPush(Uri host_uri, string access_token, byte[] payload_bytes)
         {
-            var _result = false;
-            var _message = "";
+            (bool success, string message)  _result = (false, "ok");
 
             try
             {
@@ -92,11 +91,11 @@ namespace DotNet.Push.Core
                             {
                                 _response_uuid = values.First();
 
-                                _message = $"success: '{_response_uuid}'";
-                                _result = true;
+                                _result.message = $"success: '{_response_uuid}'";
+                                _result.success = true;
                             }
                             else
-                                _message = "failure";
+                                _result.message = "failure";
                         }
                         else
                         {
@@ -104,17 +103,17 @@ namespace DotNet.Push.Core
                             var _response_json = JObject.Parse(_response_body);
 
                             var _reason_str = _response_json.Value<string>("reason");
-                            _message = $"failure: '{_reason_str}'";
+                            _result.message = $"failure: '{_reason_str}'";
                         }
                     }
                 }
             }
             catch (Exception ex)
             {
-                _message = $"exception: '{ex.Message}'";
+                _result.message = $"exception: '{ex.Message}'";
             }
 
-            return (_result, _message);
+            return _result;
         }
 
         /// <summary>
@@ -125,7 +124,7 @@ namespace DotNet.Push.Core
         /// <param name="badge">badge number</param>
         /// <param name="sound">sound file name</param>
         /// <param name="production">development or production</param>
-        public async Task<(bool result, string message)> JwtAPNsPush(string device_token, string message, int badge, string sound, bool production = false)
+        public async Task<(bool success, string message)> JwtAPNsPush(string device_token, string message, int badge, string sound, bool production = false)
         {
             var _host_uri = new Uri($"https://{(production ? ProductionServer : DevelopmentServer)}:{HostPort}/3/device/{device_token}");
 

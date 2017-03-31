@@ -9,14 +9,17 @@
         {
             get; set;
         }
+
         public string priority
         {
             get; set;
         }
+
         public Notification notification
         {
             get; set;
         }
+
         public NotifiData data
         {
             get; set;
@@ -32,26 +35,32 @@
         {
             get; set;
         }
+
         public string body
         {
             get; set;
         }
+
         public string click_action
         {
             get; set;
         }
+
         public string icon
         {
             get; set;
         }
+
         public string color
         {
             get; set;
         }
+
         public string badge
         {
             get; set;
         }
+
         public string tag
         {
             get; set;
@@ -67,14 +76,17 @@
         {
             get; set;
         }
+
         public string title
         {
             get; set;
         }
+
         public string text
         {
             get; set;
         }
+
         public SubData sub
         {
             get; set;
