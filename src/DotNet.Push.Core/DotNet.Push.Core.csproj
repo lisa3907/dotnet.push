@@ -11,7 +11,7 @@
     <AssemblyName>DotNet.Push.Core</AssemblyName>
     <PackageId>DotNet.Push.Core</PackageId>
     <PackageTags>sdk;odinsoft;push;apns</PackageTags>
-    <PackageIconUrl>https://github.com/odin-software/open-sdk/blob/master/logo-files/odinsoft-sdk.ico?raw=true</PackageIconUrl>
+    <PackageIconUrl>https://github.com/lisa3907/DotnetPush/blob/master/logo-files/dotnet.push.ico?raw=true</PackageIconUrl>
     <PackageProjectUrl>https://github.com/lisa3907/DotnetPush</PackageProjectUrl>
     <PackageLicenseUrl>https://github.com/lisa3907/DotnetPush/blob/master/LICENSE</PackageLicenseUrl>
     <NetStandardImplicitPackageVersion>1.6.1</NetStandardImplicitPackageVersion>

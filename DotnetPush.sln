@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26228.10
+VisualStudioVersion = 15.0.26228.9
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{C3402294-C352-4F8A-85A9-7D4DCBF34011}"
 	ProjectSection(SolutionItems) = preProject
@@ -13,13 +13,19 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		README.md = README.md
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNet.Push.Core", "src\DotNet.Push.Core\DotNet.Push.Core.csproj", "{6FD13866-4E3D-4F74-86D3-053D32179770}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DotNet.Push.Core", "src\DotNet.Push.Core\DotNet.Push.Core.csproj", "{6FD13866-4E3D-4F74-86D3-053D32179770}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DotNet.Push.Core.Sample", "src\DotNet.Push.Core.Sample\DotNet.Push.Core.Sample.csproj", "{5316B6B8-C840-4639-A849-10544AA82D77}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNet.Push.Sample", "src\DotNet.Push.Sample\DotNet.Push.Sample.csproj", "{F015FD84-B43F-49F8-89EB-D059A92844E0}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNet.Push", "src\DotNet.Push\DotNet.Push.csproj", "{89E1E13D-9315-452B-A10E-3BD49353D57F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "logo-files", "logo-files", "{3A3ABA83-DE36-49DB-A3BA-92078F3E14E4}"
+	ProjectSection(SolutionItems) = preProject
+		logo-files\dotnet.push.ico = logo-files\dotnet.push.ico
+		logo-files\dotnet.push.png = logo-files\dotnet.push.png
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
