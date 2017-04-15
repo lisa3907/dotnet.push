@@ -23,8 +23,21 @@ Visual Studio 2017(.NetCoreApp 1.1)
 
 ## reference
 
-> [Apple 개발자 사이트 참조](https://github.com/lisa3907/DotnetPush/blob/master/communicate_apns.md)
+> [Communicating with APNs](https://github.com/lisa3907/DotnetPush/blob/master/communicate_apns.md)
 
-> [인증키 생성 방법 설명](https://github.com/lisa3907/DotnetPush/blob/master/generate_auth_key.md)
+> [Token Based Authentication and HTTP/2 Example with APNS](https://github.com/lisa3907/DotnetPush/blob/master/generate_auth_key.md)
 
-> [닷넷코어용 HTTP/2 사용 방법](https://github.com/lisa3907/DotnetPush/blob/master/http2handler.md)
+> [How to make the .net HttpClient use http 2.0?](https://github.com/lisa3907/DotnetPush/blob/master/http2handler.md)
+
+## Donations
+
+Since I spent several days developing and testing this kit I would appreciate any donations.
+
+* BTC: 1FP3qopPnizeXafNkiXs1dTF85dkNP8fh4
+
+
+## Contact
+
+Home-Page: http://www.odinsoftware.co.kr
+
+E-MAIL: help@odinsoftware.co.kr
