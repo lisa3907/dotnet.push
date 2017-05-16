@@ -65,7 +65,7 @@ namespace DotNet.Push.Core
         /// <returns></returns>
         public async Task<(bool success, string message)> SendNotification(string device_token, string priority, string title, string click_action, string message, int badge, string icon_name, string color)
         {
-            (bool success, string message) _result = (false, "ok");
+            var _result = (success: false, message: "ok");
 
             try
             {

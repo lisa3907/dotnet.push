@@ -69,7 +69,7 @@ namespace DotNet.Push.Core
         /// <returns></returns>
         private async Task<(bool success, string message)> JwtAPNsPush(Uri host_uri, string access_token, byte[] payload_bytes)
         {
-            (bool success, string message)  _result = (false, "ok");
+            var _result = (success: false, message: "ok");
 
             try
             {
