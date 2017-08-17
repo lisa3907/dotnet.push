@@ -1,13 +1,13 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
     <Title>DotNet Push Notification</Title>
     <Description>Push Notification Service Library</Description>
     <Copyright>Copyright OdinSoftware Co., Ltd. 2017</Copyright>
     <AssemblyTitle>DotNet.Push.Core</AssemblyTitle>
     <VersionPrefix>1.0.3</VersionPrefix>
     <Authors>SEONGAHN LEE</Authors>
-    <TargetFramework>netstandard1.6</TargetFramework>
     <AssemblyName>DotNet.Push.Core</AssemblyName>
     <PackageId>DotNet.Push.Core</PackageId>
     <PackageTags>sdk;odinsoft;push;apns</PackageTags>
@@ -23,10 +23,6 @@
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <Version>1.0.3</Version>
   </PropertyGroup>
-
-  <ItemGroup>
-    <None Include="iosPushProtocol.cs" />
-  </ItemGroup>
   
   <ItemGroup>
     <PackageReference Include="jose-jwt" Version="2.4.0" />
