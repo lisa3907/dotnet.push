@@ -8,7 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\DotNet.Push.s16\DotNet.Push.s16.csproj" />
+    <ProjectReference Include="..\DotNet.Push.c11\DotNet.Push.c11.csproj" />
   </ItemGroup>
 
 </Project>

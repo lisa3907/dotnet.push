@@ -19,7 +19,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "logo-files", "logo-files", 
 		logo-files\dotnet.push.png = logo-files\dotnet.push.png
 	EndProjectSection
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DotNet.Push.s20", "src\DotNet.Push.c20\DotNet.Push.s20.csproj", "{5A9B0D96-F639-446C-BA8E-BD11BD09E3B3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DotNet.Push.s20", "src\DotNet.Push.s20\DotNet.Push.s20.csproj", "{5A9B0D96-F639-446C-BA8E-BD11BD09E3B3}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DotNet.Push.Sample.c20", "src\DotNet.Push.Sample.c20\DotNet.Push.Sample.c20.csproj", "{EC3FF747-55B8-44EC-A2F1-047EE3B2B68E}"
 EndProject
