@@ -13,9 +13,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		README.md = README.md
 	EndProjectSection
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DotNet.Push.C11", "src\DotNet.Push.c11\DotNet.Push.C11.csproj", "{6FD13866-4E3D-4F74-86D3-053D32179770}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DotNet.Push.c11", "src\DotNet.Push.c11\DotNet.Push.c11.csproj", "{6FD13866-4E3D-4F74-86D3-053D32179770}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DotNet.Push.Sample.C11", "src\DotNet.Push.Sample.c11\DotNet.Push.Sample.C11.csproj", "{5316B6B8-C840-4639-A849-10544AA82D77}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DotNet.Push.Sample.c11", "src\DotNet.Push.Sample.c11\DotNet.Push.Sample.c11.csproj", "{5316B6B8-C840-4639-A849-10544AA82D77}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "logo-files", "logo-files", "{3A3ABA83-DE36-49DB-A3BA-92078F3E14E4}"
 	ProjectSection(SolutionItems) = preProject
