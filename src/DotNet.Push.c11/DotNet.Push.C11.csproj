@@ -1,0 +1,38 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <Title>DotNet Push Notification</Title>
+    <Description>Push Notification Service Library</Description>
+    <Copyright>Copyright OdinSoftware Co., Ltd. 2017</Copyright>
+    <AssemblyTitle>DotNet.Push.Core</AssemblyTitle>
+    <VersionPrefix>1.0.3</VersionPrefix>
+    <Authors>SEONGAHN LEE</Authors>
+    <TargetFramework>netstandard1.6</TargetFramework>
+    <AssemblyName>DotNet.Push.Core</AssemblyName>
+    <PackageId>DotNet.Push.Core</PackageId>
+    <PackageTags>sdk;odinsoft;push;apns</PackageTags>
+    <PackageIconUrl>https://github.com/lisa3907/DotnetPush/blob/master/logo-files/dotnet.push.ico?raw=true</PackageIconUrl>
+    <PackageProjectUrl>https://github.com/lisa3907/DotnetPush</PackageProjectUrl>
+    <PackageLicenseUrl>https://github.com/lisa3907/DotnetPush/blob/master/LICENSE</PackageLicenseUrl>
+    <NetStandardImplicitPackageVersion>1.6.1</NetStandardImplicitPackageVersion>
+    <PackageTargetFallback>$(PackageTargetFallback);dnxcore50</PackageTargetFallback>
+    <GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
+    <GenerateAssemblyCompanyAttribute>false</GenerateAssemblyCompanyAttribute>
+    <GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>
+    <RootNamespace>DotNet.Push.Core</RootNamespace>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <Version>1.0.3</Version>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="iosPushProtocol.cs" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <PackageReference Include="jose-jwt" Version="2.4.0" />
+    <PackageReference Include="Microsoft.Net.Http.Headers" Version="1.1.2" />
+    <PackageReference Include="Newtonsoft.Json" Version="10.0.3" />
+    <PackageReference Include="System.Net.Http.WinHttpHandler" Version="4.4.0" />
+    <PackageReference Include="System.ValueTuple" Version="4.4.0" />
+  </ItemGroup>
+</Project>
