@@ -4,7 +4,7 @@
 ## JwtAPNs:
 
 ```
-Visual Studio 2017(.Net framework 4.6.2)  
+Microsfot Visual Studio community 2017(.Net framework 4.7)  
 
 [HttpTwo(0.0.1.19)](https://github.com/Redth/HttpTwo)  
 [jose-jwt(2.0.2)](https://github.com/dvsekhvalnov/jose-jwt)  
@@ -14,7 +14,7 @@ Visual Studio 2017(.Net framework 4.6.2)
 ## JwtAPNs.Core:
 
 ```
-Visual Studio 2017(.NetCoreApp 1.1)  
+Microsfot Visual Studio community 2017(.NetCoreApp 2.0)  
 
 [WinHttpHandler(4.3.0)](https://www.microsoft.com/net)  
 [jose-jwt(2.0.2)](https://github.com/dvsekhvalnov/jose-jwt)  
