@@ -1,4 +1,4 @@
-# DotNetPush
+# DotNetPush [![Build status](https://ci.appveyor.com/api/projects/status/dnp9i3t6sexv9tpa?svg=true)](https://ci.appveyor.com/project/lisa3907/dotnet.push)
 
 
 ## JwtAPNs:
@@ -29,6 +29,16 @@ Visual Studio 2017(.NetCoreApp 1.1)
 
 > [How to make the .net HttpClient use http 2.0?](https://github.com/lisa3907/DotnetPush/blob/master/http2handler.md)
 
+## Tools
+
+- Microsfot Visual Studio community 2017 version 15.4.0
+
+- .net core 2.0, .net framework 4.7
+
+## License
+
+Read [LICENSE](LICENSE)
+
 ## Donations
 
 Since I spent several days developing and testing this kit I would appreciate any donations.
@@ -37,6 +47,11 @@ Since I spent several days developing and testing this kit I would appreciate an
 
 - ETH: 0x556E7EdbcCd669a42f00c1Df53D550C00814B0e3
 
+## History
+
+```
+2018-03-29: upgrade .net core 2.0 & net47
+```
 
 ## Contact
 

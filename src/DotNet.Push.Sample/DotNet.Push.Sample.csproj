@@ -2,13 +2,13 @@
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
-    <TargetFramework>netcoreapp1.1</TargetFramework>
+    <TargetFrameworks>net47;netcoreapp2.0</TargetFrameworks>
     <AssemblyName>DotNet.Push.Core.Sample</AssemblyName>
     <RootNamespace>DotNet.Push.Core.Sample</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\DotNet.Push.s16\DotNet.Push.s16.csproj" />
+    <ProjectReference Include="..\DotNet.Push\DotNet.Push.csproj" />
   </ItemGroup>
 
 </Project>
