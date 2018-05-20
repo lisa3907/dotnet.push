@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace DotNet.Push.Core.Sample
+namespace DotNet.Push.Sample
 {
     class Program
     {

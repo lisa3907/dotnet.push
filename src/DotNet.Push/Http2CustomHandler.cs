@@ -2,7 +2,7 @@
 using System.Net.Http;
 using System.Threading.Tasks;
 
-namespace DotNet.Push.Core
+namespace DotNet.Push
 {
     public class Http2CustomHandler : WinHttpHandler
     {

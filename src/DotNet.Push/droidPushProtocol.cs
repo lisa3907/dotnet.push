@@ -1,4 +1,4 @@
-﻿namespace DotNet.Push.Core
+﻿namespace DotNet.Push
 {
     /// <summary>
     /// 다운스트림 HTTP 메시지(JSON)의 대상, 옵션, 페이로드

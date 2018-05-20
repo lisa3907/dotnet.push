@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 
-namespace DotNet.Push.Core
+namespace DotNet.Push
 {
     public class DroidPushNotifyFCM
     {

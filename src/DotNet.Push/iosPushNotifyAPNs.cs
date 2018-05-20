@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using Jose;
 using Newtonsoft.Json.Linq;
 
-namespace DotNet.Push.Core
+namespace DotNet.Push
 {
     public class IosPushNotifyAPNs
     {
