@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>net462;net471;netstandard2.0</TargetFrameworks>
+    <TargetFrameworks>net462;netcoreapp2.1</TargetFrameworks>
     <Title>DotNet Push Notification</Title>
     <Description>Push Notification Service Library</Description>
     <Copyright>Copyright OdinSoftware Co., Ltd. 2017</Copyright>
@@ -27,7 +27,7 @@
   <ItemGroup>
     <PackageReference Include="jose-jwt" Version="2.4.0" />
     <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
-    <PackageReference Include="System.Net.Http.WinHttpHandler" Version="4.4.0" />
+    <PackageReference Include="System.Net.Http.WinHttpHandler" Version="4.5.0" />
   </ItemGroup>
   
 </Project>
