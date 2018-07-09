@@ -1,10 +1,10 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
-using Newtonsoft.Json;
 
 namespace DotNet.Push
 {
@@ -104,7 +104,7 @@ namespace DotNet.Push
                         Content = new StringContent(_content, Encoding.UTF8, "application/json")
                     };
 
-                    _request.Headers.Authorization = new AuthenticationHeaderValue("key" , "=" + FCMServerApiKey);
+                    _request.Headers.Authorization = new AuthenticationHeaderValue("key", "=" + FCMServerApiKey);
                     _request.Headers.Add("Sender", "id=" + FCMServerId);
 
                     var _response = await _http_client.SendAsync(_request);

@@ -1,27 +1,74 @@
-﻿using System;
+﻿using Jose;
+using Newtonsoft.Json.Linq;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
 using System.Security.Cryptography;
-using System.Text;
 using System.Threading.Tasks;
-using Jose;
-using Newtonsoft.Json.Linq;
 
 namespace DotNet.Push
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class IosPushNotifyAPNs
     {
-        public string Algorithm { get; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public string Algorithm
+        {
+            get;
+        }
 
-        public string HostServerUrl { get; }
-        public int HostPort { get; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public string HostServerUrl
+        {
+            get;
+        }
 
-        public string APNsKeyId { get; }
-        public string TeamId { get; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public int HostPort
+        {
+            get;
+        }
 
-        public string BundleAppId { get; }
-        public CngKey PrivateKey { get; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public string APNsKeyId
+        {
+            get;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public string TeamId
+        {
+            get;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public string BundleAppId
+        {
+            get;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public CngKey PrivateKey
+        {
+            get;
+        }
 
         /// <summary>
         /// 
@@ -161,8 +208,8 @@ namespace DotNet.Push
                     aps = new
                     {
                         alert = message,
-                        badge = badge,
-                        sound = sound
+                        badge,
+                        sound
                     }
                 });
 

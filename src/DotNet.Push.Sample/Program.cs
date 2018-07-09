@@ -6,7 +6,7 @@ namespace DotNet.Push.Sample
     {
         static void Main(string[] args)
         {
-            var _test_phone = "IX";
+            var _test_phone = "IA";
 
             // IPHONE
             if (_test_phone == "IA")

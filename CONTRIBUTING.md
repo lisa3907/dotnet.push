@@ -1,8 +1,11 @@
-Donate:
-======
+## Donate:
 
-BTC: 1FP3qopPnizeXafNkiXs1dTF85dkNP8fh4
+- BTC: 15DAoUfaCanpBpTs7VQBK8dRmbQqEnF9WG
 
-Home-Page: http://www.odinsoftware.co.kr
+- ETH: 0x556E7EdbcCd669a42f00c1Df53D550C00814B0e3
 
-E-MAIL: help@odinsoftware.co.kr
+## Contact
+
+home-page: http://www.odinsoftware.co.kr
+
+e-mail: help@odinsoftware.co.kr

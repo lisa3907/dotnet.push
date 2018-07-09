@@ -55,6 +55,6 @@ Since I spent several days developing and testing this kit I would appreciate an
 
 ## Contact
 
-Home-Page: http://www.odinsoftware.co.kr
+home-page: http://www.odinsoftware.co.kr
 
-E-MAIL: help@odinsoftware.co.kr
+e-mail: help@odinsoftware.co.kr
