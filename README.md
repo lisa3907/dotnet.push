@@ -1,24 +1,24 @@
 # DotNetPush [![Build status](https://ci.appveyor.com/api/projects/status/dnp9i3t6sexv9tpa?svg=true)](https://ci.appveyor.com/project/lisa3907/dotnet.push)
 
 
-## JwtAPNs:
+## JwtAPNs for .net framework:
 
 ```
-Microsfot Visual Studio community 2017(.Net framework 4.7)  
+Microsfot Visual Studio community 2017(.Net framework 4.6.2)  
 
-[HttpTwo(0.0.1.19)](https://github.com/Redth/HttpTwo)  
-[jose-jwt(2.0.2)](https://github.com/dvsekhvalnov/jose-jwt)  
-[Josn.Net(9.0.1)](http://www.newtonsoft.com/json)
+[WinHttpHandler](https://www.microsoft.com/net)  
+[jose-jwt](https://github.com/dvsekhvalnov/jose-jwt)  
+[Josn.Net](http://www.newtonsoft.com/json)
 ```
 
-## JwtAPNs.Core:
+## JwtAPNs for .net coreapp:
 
 ```
-Microsfot Visual Studio community 2017(.NetCoreApp 2.0)  
+Microsfot Visual Studio community 2017(.NetCoreApp 2.1)  
 
-[WinHttpHandler(4.3.0)](https://www.microsoft.com/net)  
-[jose-jwt(2.0.2)](https://github.com/dvsekhvalnov/jose-jwt)  
-[Josn.Net(9.0.1)](http://www.newtonsoft.com/json)
+[WinHttpHandler](https://www.microsoft.com/net)  
+[jose-jwt](https://github.com/dvsekhvalnov/jose-jwt)  
+[Josn.Net](http://www.newtonsoft.com/json)
 ```
 
 ## reference
