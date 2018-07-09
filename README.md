@@ -33,7 +33,7 @@ Microsfot Visual Studio community 2017(.NetCoreApp 2.0)
 
 - Microsfot Visual Studio community 2017 version 15.4.0
 
-- .net core 2.0, .net framework 4.7
+- .net core 2.1, .net framework 4.6.2
 
 ## License
 
@@ -51,6 +51,8 @@ Since I spent several days developing and testing this kit I would appreciate an
 
 ```
 2018-03-29: upgrade .net core 2.0 & net47
+
+2018-07-10: upgrade .net core 2.1 & downgrade net462
 ```
 
 ## Contact

@@ -4,9 +4,9 @@
     <TargetFrameworks>net462;netcoreapp2.1</TargetFrameworks>
     <Title>DotNet Push Notification</Title>
     <Description>Push Notification Service Library</Description>
-    <Copyright>Copyright OdinSoftware Co., Ltd. 2017</Copyright>
+    <Copyright>Copyright OdinSoftware Co., Ltd. 2017-2018</Copyright>
     <AssemblyTitle>DotNet.Push.Core</AssemblyTitle>
-    <VersionPrefix>1.0.3</VersionPrefix>
+    <VersionPrefix>2.1.1</VersionPrefix>
     <Authors>SEONGAHN LEE</Authors>
     <AssemblyName>DotNet.Push</AssemblyName>
     <PackageId>DotNet.Push</PackageId>
@@ -19,9 +19,9 @@
     <GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>
     <RootNamespace>DotNet.Push</RootNamespace>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
-    <Version>2.1.0</Version>
-    <PackageReleaseNotes>update .net core 2.0 &amp; net471 &amp; net462</PackageReleaseNotes>
-    <FileVersion>2.1.0.0</FileVersion>
+    <Version>2.1.1</Version>
+    <PackageReleaseNotes>upgrade .net core 2.1 &amp; downgrade net462</PackageReleaseNotes>
+    <FileVersion>2.1.1.0</FileVersion>
   </PropertyGroup>
 
   <ItemGroup>
