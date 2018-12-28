@@ -176,11 +176,11 @@ namespace DotNet.Push
         /// Token Based Authentication APNs push
         /// </summary>
         /// <param name="device_token">device token</param>
-        /// <param name="message">push message</param>
+        /// <param name="content">push content</param>
         /// <param name="badge">badge number</param>
         /// <param name="sound">sound file name</param>
         /// <param name="production">development or production</param>
-        public async Task<(bool success, string message)> JwtAPNsPush(string device_token, string message, int badge, string sound)
+        public async Task<(bool success, string message)> JwtAPNsPushExtend(string device_token, object content, int badge, string sound)
         {
             var _host_uri = new Uri($"https://{HostServerUrl}:{HostPort}/3/device/{device_token}");
 
@@ -207,7 +207,7 @@ namespace DotNet.Push
                 {
                     aps = new
                     {
-                        alert = message,
+                        alert = content,
                         badge,
                         sound
                     }
@@ -217,6 +217,19 @@ namespace DotNet.Push
             }
 
             return await JwtAPNsPush(_host_uri, _access_token, _payload);
+        }
+
+        /// <summary>
+        /// Token Based Authentication APNs push
+        /// </summary>
+        /// <param name="device_token">device token</param>
+        /// <param name="message">push message</param>
+        /// <param name="badge">badge number</param>
+        /// <param name="sound">sound file name</param>
+        /// <param name="production">development or production</param>
+        public async Task<(bool success, string message)> JwtAPNsPush(string device_token, string message, int badge, string sound)
+        {
+            return await JwtAPNsPushExtend(device_token, message, badge, sound);
         }
     }
 }
