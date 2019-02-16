@@ -6,7 +6,7 @@
     <Description>Push Notification Service Library</Description>
     <Copyright>Copyright OdinSoftware Co., Ltd. 2017-2018</Copyright>
     <AssemblyTitle>DotNet.Push.Core</AssemblyTitle>
-    <VersionPrefix>2.1.1</VersionPrefix>
+    <VersionPrefix>2.2.0</VersionPrefix>
     <Authors>SEONGAHN LEE</Authors>
     <AssemblyName>DotNet.Push</AssemblyName>
     <PackageId>DotNet.Push</PackageId>
@@ -19,10 +19,10 @@
     <GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>
     <RootNamespace>DotNet.Push</RootNamespace>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
-    <Version>2.2.0</Version>
-    <PackageReleaseNotes>upgrade .net core 2.2</PackageReleaseNotes>
-    <FileVersion>2.2.0.0</FileVersion>
-    <AssemblyVersion>2.2.0.0</AssemblyVersion>
+    <Version>2.2.1</Version>
+    <PackageReleaseNotes>netstandard2.0</PackageReleaseNotes>
+    <FileVersion>2.2.1.0</FileVersion>
+    <AssemblyVersion>2.2.1.0</AssemblyVersion>
   </PropertyGroup>
 
   <ItemGroup>
