@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>net462;netcoreapp2.2</TargetFrameworks>
+    <TargetFrameworks>net462;netstandard2.0;netcoreapp2.2</TargetFrameworks>
     <Title>DotNet Push Notification</Title>
     <Description>Push Notification Service Library</Description>
     <Copyright>Copyright OdinSoftware Co., Ltd. 2017-2018</Copyright>
