@@ -13,7 +13,6 @@
     <PackageTags>sdk;odinsoft;push;apns</PackageTags>
     <PackageIconUrl>https://github.com/lisa3907/DotnetPush/blob/master/logo-files/dotnet.push.ico?raw=true</PackageIconUrl>
     <PackageProjectUrl>https://github.com/lisa3907/DotnetPush</PackageProjectUrl>
-    <PackageLicenseUrl></PackageLicenseUrl>
     <GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
     <GenerateAssemblyCompanyAttribute>false</GenerateAssemblyCompanyAttribute>
     <GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>
@@ -22,12 +21,20 @@
     <Version>2.2.2</Version>
     <PackageReleaseNotes>.netcore2.2 to netstandard2.0</PackageReleaseNotes>
     <FileVersion>2.2.2.0</FileVersion>
+    <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="jose-jwt" Version="2.4.0" />
     <PackageReference Include="Newtonsoft.Json" Version="12.0.1" />
     <PackageReference Include="System.Net.Http.WinHttpHandler" Version="4.5.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\..\LICENSE.txt">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
   </ItemGroup>
   
 </Project>
