@@ -1,4 +1,8 @@
-# DotNetPush [![Build status](https://ci.appveyor.com/api/projects/status/dnp9i3t6sexv9tpa?svg=true)](https://ci.appveyor.com/project/lisa3907/dotnet.push)
+# DotNetPush 
+
+[![Build status](https://ci.appveyor.com/api/projects/status/dnp9i3t6sexv9tpa?svg=true)](https://ci.appveyor.com/project/lisa3907/dotnet-push)
+[![NuGet Downloads](https://img.shields.io/nuget/dt/dotnet.push.svg)](https://www.nuget.org/packages/dotnet.push)
+[![License](https://img.shields.io/github/license/lisa3907/dotnet.push.svg)](https://github.com/lisa3907/dotnet.push/blob/master/LICENSE.txt)
 
 
 ## JwtAPNs for .net framework:
