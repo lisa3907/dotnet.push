@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
-    <TargetFrameworks>net462;netcoreapp2.2</TargetFrameworks>
+    <TargetFrameworks>netcoreapp2.2</TargetFrameworks>
     <AssemblyName>DotNet.Push.Sample</AssemblyName>
     <RootNamespace>DotNet.Push.Sample</RootNamespace>
   </PropertyGroup>
