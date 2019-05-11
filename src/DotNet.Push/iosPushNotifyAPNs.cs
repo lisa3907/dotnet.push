@@ -10,12 +10,12 @@ using System.Threading.Tasks;
 namespace DotNet.Push
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public class IosPushNotifyAPNs
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public string Algorithm
         {
@@ -23,7 +23,7 @@ namespace DotNet.Push
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public string HostServerUrl
         {
@@ -31,7 +31,7 @@ namespace DotNet.Push
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public int HostPort
         {
@@ -39,7 +39,7 @@ namespace DotNet.Push
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public string APNsKeyId
         {
@@ -47,7 +47,7 @@ namespace DotNet.Push
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public string TeamId
         {
@@ -55,7 +55,7 @@ namespace DotNet.Push
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public string BundleAppId
         {
@@ -63,7 +63,7 @@ namespace DotNet.Push
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public CngKey PrivateKey
         {
@@ -71,7 +71,7 @@ namespace DotNet.Push
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="key_id"></param>
         /// <param name="team_id"></param>
@@ -101,15 +101,15 @@ namespace DotNet.Push
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="date"></param>
-        ///<returns>Date converted to seconds since Unix epoch(Jan 1, 1970, midnight UTC).</returns>        
+        ///<returns>Date converted to seconds since Unix epoch(Jan 1, 1970, midnight UTC).</returns>
         private long ToUnixEpochDate(DateTime date)
           => (long)Math.Round((date.ToUniversalTime() - new DateTimeOffset(1970, 1, 1, 0, 0, 0, TimeSpan.Zero)).TotalSeconds);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="host_uri"></param>
         /// <param name="access_token"></param>

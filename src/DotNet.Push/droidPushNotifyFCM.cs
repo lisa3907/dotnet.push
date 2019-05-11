@@ -11,7 +11,7 @@ namespace DotNet.Push
     public class DroidPushNotifyFCM
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="server_api_key"></param>
         /// <param name="server_id"></param>
@@ -25,7 +25,7 @@ namespace DotNet.Push
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public string FCMServerApiKey
         {
@@ -34,7 +34,7 @@ namespace DotNet.Push
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public string FCMServerId
         {
@@ -43,7 +43,7 @@ namespace DotNet.Push
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public string AlarmTag
         {
@@ -52,7 +52,7 @@ namespace DotNet.Push
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="device_token"></param>
         /// <param name="priority">high,normal</param>
