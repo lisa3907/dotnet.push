@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>netstandard2.0</TargetFrameworks>
+    <TargetFramework>netstandard2.1</TargetFramework>
     <Title>DotNet Push Notification</Title>
     <Description>Push Notification Service Library</Description>
     <Copyright>Copyright OdinSoftware Co., Ltd. 2017-2018</Copyright>
@@ -11,7 +11,7 @@
     <AssemblyName>DotNet.Push</AssemblyName>
     <PackageId>DotNet.Push</PackageId>
     <PackageTags>sdk;odinsoft;push;apns</PackageTags>
-    <PackageIconUrl>https://github.com/lisa3907/DotnetPush/blob/master/logo-files/dotnet.push.ico?raw=true</PackageIconUrl>
+    <PackageIcon>dotnet.push.png</PackageIcon>
     <PackageProjectUrl>https://github.com/lisa3907/DotnetPush</PackageProjectUrl>
     <GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
     <GenerateAssemblyCompanyAttribute>false</GenerateAssemblyCompanyAttribute>
@@ -26,10 +26,17 @@
 
   <ItemGroup>
     <PackageReference Include="jose-jwt" Version="2.4.0" />
-    <PackageReference Include="Newtonsoft.Json" Version="12.0.1" />
-    <PackageReference Include="System.Net.Http.WinHttpHandler" Version="4.5.3" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.2" />
+    <PackageReference Include="System.Net.Http.WinHttpHandler" Version="4.6.0" />
   </ItemGroup>
-
+  
+  <ItemGroup>
+    <None Include="..\..\logo-files\dotnet.push.png">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+  </ItemGroup>
+  
   <ItemGroup>
     <None Include="..\..\LICENSE.txt">
       <Pack>True</Pack>
