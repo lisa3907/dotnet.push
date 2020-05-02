@@ -128,7 +128,7 @@ namespace DotNet.Push
                         var _request_message = new HttpRequestMessage();
                         {
                             _request_message.RequestUri = host_uri;
-                            _request_message.Headers.Add("authorization", string.Format("bearer {0}", access_token));
+                            _request_message.Headers.Add("authorization", String.Format("bearer {0}", access_token));
                             _request_message.Headers.Add("apns-id", Guid.NewGuid().ToString());
                             _request_message.Headers.Add("apns-expiration", "0");
                             _request_message.Headers.Add("apns-priority", "10");
