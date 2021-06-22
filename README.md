@@ -5,20 +5,10 @@
 [![License](https://img.shields.io/github/license/lisa3907/dotnet.push.svg)](https://github.com/lisa3907/dotnet.push/blob/master/LICENSE.txt)
 
 
-## JwtAPNs for .net framework:
-
-```
-Microsfot Visual Studio community 2017(.Net framework 4.6.2)  
-
-[WinHttpHandler](https://www.microsoft.com/net)  
-[jose-jwt](https://github.com/dvsekhvalnov/jose-jwt)  
-[Josn.Net](http://www.newtonsoft.com/json)
-```
-
 ## JwtAPNs for .net coreapp:
 
 ```
-Microsfot Visual Studio community 2017(.NetCoreApp 2.1)  
+Visual Studio community 2019
 
 [WinHttpHandler](https://www.microsoft.com/net)  
 [jose-jwt](https://github.com/dvsekhvalnov/jose-jwt)  
@@ -35,9 +25,9 @@ Microsfot Visual Studio community 2017(.NetCoreApp 2.1)
 
 ## Tools
 
-- Microsfot Visual Studio community 2017 version 15.4.0
+- Visual Studio community 2019
 
-- .netcore 2.2, .net framework 4.6.2
+- .net core 5.0
 
 ## License
 
@@ -54,6 +44,8 @@ Since I spent several days developing and testing this kit I would appreciate an
 ## History
 
 ```
+2020-12-30: update to .net core 5.0
+
 2019-02-17: upgrade .net core 2.2 & net462
 
 2018-03-29: upgrade .net core 2.0 & net47
