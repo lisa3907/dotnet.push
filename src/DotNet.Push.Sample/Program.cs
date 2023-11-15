@@ -1,7 +1,10 @@
 ﻿using System;
+using System.Runtime.Versioning;
 
 namespace DotNet.Push.Sample
 {
+    [SupportedOSPlatform("windows")]
+
     internal class Program
     {
         private static void Main(string[] args)
