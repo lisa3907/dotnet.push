@@ -4,11 +4,14 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
+using System.Runtime.Versioning;
 using System.Security.Cryptography;
 using System.Threading.Tasks;
 
 namespace DotNet.Push
 {
+    [SupportedOSPlatform("windows")]
+
     /// <summary>
     ///
     /// </summary>

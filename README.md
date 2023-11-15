@@ -25,9 +25,9 @@ Visual Studio community 2019
 
 ## Tools
 
-- Visual Studio community 2019
+- Visual Studio community 2022
 
-- .net core 5.0
+- .net core 7.0
 
 ## License
 
@@ -44,6 +44,8 @@ Since I spent several days developing and testing this kit I would appreciate an
 ## History
 
 ```
+2023-11-15: update to .net core 7.0
+
 2020-12-30: update to .net core 5.0
 
 2019-02-17: upgrade .net core 2.2 & net462
@@ -55,6 +57,6 @@ Since I spent several days developing and testing this kit I would appreciate an
 
 ## Contact
 
-home-page: http://www.odinsoftware.co.kr
+home-page: http://www.odinsoft.co.kr
 
-e-mail: help@odinsoftware.co.kr
+e-mail: help@odinsoft.co.kr

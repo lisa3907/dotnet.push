@@ -1,48 +1,60 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
-    <Title>DotNet Push Notification</Title>
-    <Description>Push Notification Service Library</Description>
-    <Copyright>Copyright OdinSoftware Co., Ltd. 2015-2021</Copyright>
-    <AssemblyTitle>DotNet.Push.Core</AssemblyTitle>
-    <VersionPrefix>2.1.1</VersionPrefix>
-    <Authors>SEONGAHN LEE</Authors>
-    <AssemblyName>DotNet.Push</AssemblyName>
-    <PackageId>DotNet.Push</PackageId>
-    <PackageTags>sdk;odinsoft;push;apns</PackageTags>
-    <PackageIcon>dotnet.push.png</PackageIcon>
-    <PackageProjectUrl>https://github.com/lisa3907/DotnetPush</PackageProjectUrl>
-    <GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
-    <GenerateAssemblyCompanyAttribute>false</GenerateAssemblyCompanyAttribute>
-    <GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>
-    <RootNamespace>DotNet.Push</RootNamespace>
-    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
-    <Version>3.1.1</Version>
-    <PackageReleaseNotes>update to core 6.0 &amp; nuget update</PackageReleaseNotes>
-    <FileVersion>3.1.1.9</FileVersion>
-    <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
-    <AssemblyVersion>3.1.1.9</AssemblyVersion>
-  </PropertyGroup>
+	<PropertyGroup>
+		<TargetFramework>net7.0</TargetFramework>
+		<Title>DotNet Push Notification</Title>
+		<Description>Push Notification Service Library</Description>
+		<Copyright>Copyright OdinSoft Co., Ltd. 2015-2023</Copyright>
+		<AssemblyTitle>DotNet.Push.Core</AssemblyTitle>
+		<Authors>SEONGAHN LEE</Authors>
+		<AssemblyName>DotNet.Push</AssemblyName>
+		
+		<PackageId>DotNet.Push</PackageId>
+		<PackageTags>sdk;odinsoft;push;apns</PackageTags>
+		<PackageIcon>dotnet.push.png</PackageIcon>
+		<PackageProjectUrl>https://github.com/lisa3907/DotnetPush</PackageProjectUrl>
+		
+		<GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
+		<GenerateAssemblyCompanyAttribute>false</GenerateAssemblyCompanyAttribute>
+		<GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>
+		<RootNamespace>DotNet.Push</RootNamespace>
+		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
 
-  <ItemGroup>
-    <PackageReference Include="jose-jwt" Version="3.2.0" />
-    <PackageReference Include="Newtonsoft.Json" Version="13.0.2" />
-    <PackageReference Include="System.Net.Http.WinHttpHandler" Version="6.0.0" />
-  </ItemGroup>
-  
-  <ItemGroup>
-    <None Include="..\..\logo-files\dotnet.push.png">
-      <Pack>True</Pack>
-      <PackagePath></PackagePath>
-    </None>
-  </ItemGroup>
-  
-  <ItemGroup>
-    <None Include="..\..\LICENSE.txt">
-      <Pack>True</Pack>
-      <PackagePath></PackagePath>
-    </None>
-  </ItemGroup>
-  
+		<VersionPrefix>3.2.1</VersionPrefix>
+		<Version>3.2.1</Version>
+		<FileVersion>3.2.1.10</FileVersion>
+		<AssemblyVersion>3.2.1.10</AssemblyVersion>
+
+		<PackageReleaseNotes>update to core 7.0 &amp; nuget update</PackageReleaseNotes>
+		<PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
+		<PackageReadmeFile>README.md</PackageReadmeFile>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="jose-jwt" Version="4.1.0" />
+		<PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+		<PackageReference Include="System.Net.Http.WinHttpHandler" Version="8.0.0" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<None Include="..\..\logo-files\dotnet.push.png">
+			<Pack>True</Pack>
+			<PackagePath></PackagePath>
+		</None>
+	</ItemGroup>
+
+	<ItemGroup>
+		<None Include="..\..\LICENSE.txt">
+			<Pack>True</Pack>
+			<PackagePath></PackagePath>
+		</None>
+	</ItemGroup>
+
+	<ItemGroup>
+		<None Include="..\..\README.md">
+			<Pack>True</Pack>
+			<PackagePath></PackagePath>
+		</None>
+	</ItemGroup>
+
 </Project>
