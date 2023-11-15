@@ -20,21 +20,15 @@
 		<RootNamespace>DotNet.Push</RootNamespace>
 		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
 
-		<VersionPrefix>3.2.1</VersionPrefix>
-		<Version>3.2.1</Version>
-		<FileVersion>3.2.1.10</FileVersion>
-		<AssemblyVersion>3.2.1.10</AssemblyVersion>
+		<VersionPrefix>3.2.2</VersionPrefix>
+		<Version>3.2.2</Version>
+		<FileVersion>3.2.2.11</FileVersion>
+		<AssemblyVersion>3.2.2.11</AssemblyVersion>
 
 		<PackageReleaseNotes>update to core 7.0 &amp; nuget update</PackageReleaseNotes>
 		<PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
 		<PackageReadmeFile>README.md</PackageReadmeFile>
 	</PropertyGroup>
-
-	<ItemGroup>
-		<PackageReference Include="jose-jwt" Version="4.1.0" />
-		<PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
-		<PackageReference Include="System.Net.Http.WinHttpHandler" Version="8.0.0" />
-	</ItemGroup>
 
 	<ItemGroup>
 		<None Include="..\..\logo-files\dotnet.push.png">

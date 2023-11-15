@@ -1,9 +1,9 @@
-﻿using Newtonsoft.Json;
-using System;
+﻿using System;
 using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
 
 namespace DotNet.Push
@@ -93,7 +93,7 @@ namespace DotNet.Push
                     }
                 }
 
-                var _content = JsonConvert.SerializeObject(_pusher);
+                var _content = JsonSerializer.Serialize(_pusher);
 
                 using (var _http_client = new HttpClient())
                 {

@@ -1,22 +1,213 @@
-﻿using Jose;
-using Newtonsoft.Json.Linq;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
-using System.Runtime.Versioning;
 using System.Security.Cryptography;
+using System.Text;
+using System.Text.Json;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace DotNet.Push
 {
-    [SupportedOSPlatform("windows")]
-
     /// <summary>
     ///
     /// </summary>
     public class IosPushNotifyAPNs
     {
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="teamId"></param>
+        /// <param name="bundleAppId"></param>
+        /// <param name="apnsPrivatekeyId"></param>
+        /// <param name="apnsPrivateKey"></param>
+        /// <param name="algorithm"></param>
+        /// <param name="production"></param>
+        /// <param name="port"></param>
+        public IosPushNotifyAPNs(string teamId, string bundleAppId, string apnsPrivatekeyId, string apnsPrivateKey, string algorithm = "ES256", bool production = true, int port = 443, int expireMinutes = 60)
+        {
+            TeamId = teamId;
+            BundleAppId = bundleAppId;
+            Algorithm = algorithm;
+
+            HostServerUrl = production ? "api.push.apple.com" : "api.development.push.apple.com";
+            HostPort = port;
+
+            APNsPrivateKeyId = apnsPrivatekeyId;
+            APNsPrivateKey = getP8PrivateKey(apnsPrivateKey);
+
+            ExpireMinutes = expireMinutes;
+        }
+
+        private long getEpochTimestamp()
+        {
+            return (long)Math.Round((DateTime.UtcNow - new DateTimeOffset(1970, 1, 1, 0, 0, 0, TimeSpan.Zero)).TotalSeconds);
+        }
+
+        private string getP8PrivateKey(string auth_key_path)
+        {
+            var content = System.IO.File.ReadAllText(auth_key_path);
+            return content.Split('\n')[1];
+        }
+
+        private string getJwtToken()
+        {
+            var header = JsonSerializer.Serialize(new
+            {
+                alg = Algorithm,
+                kid = APNsPrivateKeyId
+            });
+
+            var timestamp = getEpochTimestamp();
+
+            var payload = JsonSerializer.Serialize(new
+            {
+                iss = TeamId,
+                iat = timestamp,
+                exp = timestamp + ExpireMinutes * 60
+            });
+
+            var header_base64 = Convert.ToBase64String(Encoding.UTF8.GetBytes(header));
+            var payload_base64 = Convert.ToBase64String(Encoding.UTF8.GetBytes(payload));
+
+            var jwt_data = $"{header_base64}.{payload_base64}";
+            var jwt_bytes = Encoding.UTF8.GetBytes(jwt_data);
+
+            var key_bytes = Convert.FromBase64String(APNsPrivateKey);
+
+            using var ecdsa = ECDsa.Create();
+            ecdsa.ImportPkcs8PrivateKey(key_bytes, out _);
+
+            var signature = ecdsa.SignData(jwt_bytes, HashAlgorithmName.SHA256);
+            var sign_base64 = Convert.ToBase64String(signature);
+
+            return $"{jwt_data}.{sign_base64}";
+        }
+
+        private bool getJwtExpired(string accessToken)
+        {
+            var result = true;
+
+            if (!String.IsNullOrEmpty(accessToken))
+            {
+                var parts = accessToken.Split('.');
+                if (parts.Length == 3)
+                {
+                    var payload = parts[1];
+                    var bytes = Convert.FromBase64String(payload);
+
+                    var json = Encoding.UTF8.GetString(bytes);
+                    var data = JsonSerializer.Deserialize<Dictionary<string, object>>(json);
+
+                    if (data != null && data.TryGetValue("exp", out var expValue) && expValue is long exp)
+                    {
+                        var expire = DateTimeOffset.FromUnixTimeSeconds(exp).DateTime;
+                        if (expire > DateTime.UtcNow)
+                        {
+                            result = false;
+                        }
+                    }
+                }
+            }
+
+            return result;
+        }
+
+        private async Task<(bool success, string message)> pushJwtAPNsAsync(Uri requestUri, string accessToken, string payload, string apnsId, CancellationToken cancellationToken)
+        {
+            var result = (success: false, message: "ok");
+
+            try
+            {
+                using (var httpClient = new HttpClient())
+                {
+                    var request = new HttpRequestMessage
+                    {
+                        Method = HttpMethod.Post,
+                        RequestUri = requestUri,
+                        Version = new Version("2.0"),
+                        Content = new StringContent(payload)
+                    };
+
+                    request.Headers.Add("authorization", String.Format("bearer {0}", accessToken));
+                    request.Headers.Add("apns-id", apnsId);
+                    request.Headers.Add("apns-expiration", "0");
+                    request.Headers.Add("apns-priority", "10");
+                    request.Headers.Add("apns-push-type", "alert");
+                    request.Headers.Add("apns-topic", BundleAppId);
+
+                    var response = await httpClient.SendAsync(request, cancellationToken);
+                    if (response.StatusCode == System.Net.HttpStatusCode.OK)
+                    {
+                        var response_uuid = "";
+
+                        IEnumerable<string> values;
+
+                        if (response.Headers.TryGetValues("apns-id", out values))
+                        {
+                            response_uuid = values.First();
+
+                            result.message = $"success: '{response_uuid}'";
+                            result.success = true;
+                        }
+                        else
+                        {
+                            result.message = "failure";
+                        }
+                    }
+                    else
+                    {
+                        var json = await response.Content.ReadAsStringAsync();
+
+                        var data = JsonSerializer.Deserialize<Dictionary<string, object>>(json);
+                        if (data.TryGetValue("reason", out var reason))
+                            result.message = $"failure: '{reason}'";
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                result.message = $"exception: '{ex.Message}'";
+            }
+
+            return result;
+        }
+
+        /// <summary>
+        /// Token Based Authentication APNs push
+        /// </summary>
+        /// <param name="device_token">device token</param>
+        /// <param name="content">push content</param>
+        /// <param name="badge">badge number</param>
+        /// <param name="sound">sound file name</param>
+        public async Task<(bool success, string message)> JwtAPNsPushAsync(string device_token, object content, string apnsId, int badge, string sound, CancellationToken cancellationToken = default)
+        {
+            var requestUri = new Uri($"https://{HostServerUrl}:{HostPort}/3/device/{device_token}");
+
+            var accessToken = JwtToken;
+            {
+                if (getJwtExpired(accessToken))
+                {
+                    accessToken = getJwtToken();
+                    JwtToken = accessToken;
+                }
+            }
+
+            var payload = JsonSerializer.Serialize(new
+            {
+                aps = new
+                {
+                    alert = content,
+                    badge,
+                    sound
+                },
+                id = apnsId
+            });
+
+            return await pushJwtAPNsAsync(requestUri, accessToken, payload, apnsId, cancellationToken);
+        }
+
         /// <summary>
         ///
         /// </summary>
@@ -44,14 +235,6 @@ namespace DotNet.Push
         /// <summary>
         ///
         /// </summary>
-        public string APNsKeyId
-        {
-            get;
-        }
-
-        /// <summary>
-        ///
-        /// </summary>
         public string TeamId
         {
             get;
@@ -68,7 +251,7 @@ namespace DotNet.Push
         /// <summary>
         ///
         /// </summary>
-        public CngKey PrivateKey
+        public string APNsPrivateKeyId
         {
             get;
         }
@@ -76,163 +259,21 @@ namespace DotNet.Push
         /// <summary>
         ///
         /// </summary>
-        /// <param name="key_id"></param>
-        /// <param name="team_id"></param>
-        /// <param name="app_id"></param>
-        /// <param name="auth_key_path"></param>
-        /// <param name="production"></param>
-        public IosPushNotifyAPNs(string key_id, string team_id, string app_id, string auth_key_path, string algorithm = "ES256", bool production = false, int port = 443)
+        public string APNsPrivateKey
         {
-            Algorithm = algorithm;
-            if (production == false)
-                HostServerUrl = "api.development.push.apple.com";
-            else
-                HostServerUrl = "api.push.apple.com";
-
-            HostPort = port;
-
-            APNsKeyId = key_id;
-            TeamId = team_id;
-            BundleAppId = app_id;
-
-            // 다운로드 읽기 암호화 된 개인 키 (.p8)
-            var _private_key_content = System.IO.File.ReadAllText(auth_key_path);
-            var _private_key = _private_key_content.Split('\n')[1];
-
-            var _secret_key_blob = Convert.FromBase64String(_private_key);
-            PrivateKey = CngKey.Import(_secret_key_blob, CngKeyBlobFormat.Pkcs8PrivateBlob);
+            get;
         }
 
-        /// <summary>
-        ///
-        /// </summary>
-        /// <param name="date"></param>
-        ///<returns>Date converted to seconds since Unix epoch(Jan 1, 1970, midnight UTC).</returns>
-        private long ToUnixEpochDate(DateTime date)
-          => (long)Math.Round((date.ToUniversalTime() - new DateTimeOffset(1970, 1, 1, 0, 0, 0, TimeSpan.Zero)).TotalSeconds);
-
-        /// <summary>
-        ///
-        /// </summary>
-        /// <param name="host_uri"></param>
-        /// <param name="access_token"></param>
-        /// <param name="payload_bytes"></param>
-        /// <returns></returns>
-        private async Task<(bool success, string message)> JwtAPNsPush(Uri host_uri, string access_token, byte[] payload_bytes)
+        public int ExpireMinutes
         {
-            var _result = (success: false, message: "ok");
-
-            try
-            {
-                using (var _handler = new Http2CustomHandler())
-                {
-                    using (var _http_client = new HttpClient(_handler))
-                    {
-                        var _request_message = new HttpRequestMessage();
-                        {
-                            _request_message.RequestUri = host_uri;
-                            _request_message.Headers.Add("authorization", String.Format("bearer {0}", access_token));
-                            _request_message.Headers.Add("apns-id", Guid.NewGuid().ToString());
-                            _request_message.Headers.Add("apns-expiration", "0");
-                            _request_message.Headers.Add("apns-priority", "10");
-                            _request_message.Headers.Add("apns-topic", BundleAppId);
-                            _request_message.Method = HttpMethod.Post;
-                            _request_message.Content = new ByteArrayContent(payload_bytes);
-                        }
-
-                        var _response_message = await _http_client.SendAsync(_request_message);
-                        if (_response_message.StatusCode == System.Net.HttpStatusCode.OK)
-                        {
-                            var _response_uuid = "";
-
-                            IEnumerable<string> values;
-                            if (_response_message.Headers.TryGetValues("apns-id", out values))
-                            {
-                                _response_uuid = values.First();
-
-                                _result.message = $"success: '{_response_uuid}'";
-                                _result.success = true;
-                            }
-                            else
-                                _result.message = "failure";
-                        }
-                        else
-                        {
-                            var _response_body = await _response_message.Content.ReadAsStringAsync();
-                            var _response_json = JObject.Parse(_response_body);
-
-                            var _reason_str = _response_json.Value<string>("reason");
-                            _result.message = $"failure: '{_reason_str}'";
-                        }
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                _result.message = $"exception: '{ex.Message}'";
-            }
-
-            return _result;
+            get;
+            set;
         }
 
-        /// <summary>
-        /// Token Based Authentication APNs push
-        /// </summary>
-        /// <param name="device_token">device token</param>
-        /// <param name="content">push content</param>
-        /// <param name="badge">badge number</param>
-        /// <param name="sound">sound file name</param>
-        /// <param name="production">development or production</param>
-        public async Task<(bool success, string message)> JwtAPNsPushExtend(string device_token, object content, int badge, string sound)
+        public string JwtToken
         {
-            var _host_uri = new Uri($"https://{HostServerUrl}:{HostPort}/3/device/{device_token}");
-
-            var _access_token = "";
-            {
-                var payload = new Dictionary<string, object>()
-                    {
-                        { "iss", TeamId },
-                        { "iat", ToUnixEpochDate(DateTime.Now) }
-                    };
-
-                var header = new Dictionary<string, object>()
-                    {
-                        { "alg", Algorithm },
-                        { "kid", APNsKeyId }
-                    };
-
-                _access_token = Jose.JWT.Encode(payload, PrivateKey, JwsAlgorithm.ES256, header);
-            }
-
-            var _payload = new byte[0];
-            {
-                var _data = JObject.FromObject(new
-                {
-                    aps = new
-                    {
-                        alert = content,
-                        badge,
-                        sound
-                    }
-                });
-
-                _payload = System.Text.Encoding.UTF8.GetBytes(_data.ToString());
-            }
-
-            return await JwtAPNsPush(_host_uri, _access_token, _payload);
-        }
-
-        /// <summary>
-        /// Token Based Authentication APNs push
-        /// </summary>
-        /// <param name="device_token">device token</param>
-        /// <param name="message">push message</param>
-        /// <param name="badge">badge number</param>
-        /// <param name="sound">sound file name</param>
-        /// <param name="production">development or production</param>
-        public async Task<(bool success, string message)> JwtAPNsPush(string device_token, string message, int badge, string sound)
-        {
-            return await JwtAPNsPushExtend(device_token, message, badge, sound);
+            get;
+            set;
         }
     }
 }

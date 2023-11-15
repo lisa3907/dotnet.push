@@ -1,24 +1,27 @@
 ﻿using System;
-using System.Runtime.Versioning;
+using System.Threading.Tasks;
 
 namespace DotNet.Push.Sample
 {
-    [SupportedOSPlatform("windows")]
+    //[SupportedOSPlatform("windows")]
 
     internal class Program
     {
-        private static void Main(string[] args)
+        private static async Task Main(string[] args)
         {
             var _test_phone = "IA";
 
             // IPHONE
             if (_test_phone == "IA")
             {
-                var _apns = new IosPushNotifyAPNs("<key-id>", "<team-id>", "<app-id>", "<key-file-path>");
-                var _result = _apns
-                                .JwtAPNsPush("<device-token>", "Json Web Token(JWT): Apple Push Notification Service(APNs)", 1, "<sound>")
-                                .GetAwaiter()
-                                .GetResult();
+                var _apns = new IosPushNotifyAPNs("<team-id>", "<bundle-app-id>", "<private-key-id>", @"<key-file-path>");
+                var content = new
+                {
+                    title = "Json Web Token(JWT)",
+                    body = "Apple Push Notification Service(APNs)",
+                };
+
+                var _result = await _apns.JwtAPNsPushAsync("<device-token>", content, Guid.NewGuid().ToString(), 1, "ping.aiff");
 
                 Console.WriteLine($"result: {_result.success}, '{_result.message}'");
             }
