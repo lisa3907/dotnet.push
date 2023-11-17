@@ -20,10 +20,10 @@
 		<RootNamespace>DotNet.Push</RootNamespace>
 		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
 
-		<VersionPrefix>3.2.2</VersionPrefix>
-		<Version>3.2.2</Version>
-		<FileVersion>3.2.2.11</FileVersion>
-		<AssemblyVersion>3.2.2.11</AssemblyVersion>
+		<VersionPrefix>3.2.3</VersionPrefix>
+		<Version>3.2.3</Version>
+		<FileVersion>3.2.3.12</FileVersion>
+		<AssemblyVersion>3.2.3.12</AssemblyVersion>
 
 		<PackageReleaseNotes>update to core 7.0 &amp; nuget update</PackageReleaseNotes>
 		<PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
