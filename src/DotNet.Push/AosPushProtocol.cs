@@ -3,7 +3,7 @@
     /// <summary>
     /// 다운스트림 HTTP 메시지(JSON)의 대상, 옵션, 페이로드
     /// </summary>
-    public class DroidPushProtocol
+    public class AosPushProtocol
     {
         /// <summary>
         /// 이 매개변수는 메시지의 수신자를 지정합니다.
@@ -77,7 +77,7 @@
         /// 이 표에 정의되어 있는 모든 단어(예: collapse_key)도 사용해서는 안 됩니다.
         /// 문자열 유형의 값을 사용하는 것이 좋습니다.개체의 값이나 문자열이 아닌 기타 데이터 유형(예: 정수 또는 부울)은 문자열로 변환해야 합니다.
         /// </summary>
-        public DroidNotifyData data
+        public AosNotifyData data
         {
             get; set;
         }
@@ -87,7 +87,7 @@
         /// 자세한 내용은 알림 페이로드 지원을 참조하세요.
         /// 알림 메시지 및 데이터 메시지 옵션에 대한 자세한 내용은 페이로드를 참조하세요.
         /// </summary>
-        public DroidNotification notification
+        public AosNotification notification
         {
             get; set;
         }
@@ -96,7 +96,7 @@
     /// <summary>
     /// Android — 알림 메시지 키
     /// </summary>
-    public class DroidNotification
+    public class AosNotification
     {
         /// <summary>
         /// 알림 제목을 나타냅니다.
@@ -202,7 +202,7 @@
     /// <summary>
     ///
     /// </summary>
-    public class DroidNotifyData
+    public class AosNotifyData
     {
         /// <summary>
         /// 클라이언트 앱 홈 아이콘의 배지를 나타냅니다.

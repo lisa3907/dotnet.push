@@ -102,11 +102,8 @@ namespace DotNet.Push
 
                     if (data != null && data.TryGetValue("exp", out var expValue) && expValue is long exp)
                     {
-                        var expire = DateTimeOffset.FromUnixTimeSeconds(exp).DateTime;
-                        if (expire > DateTime.UtcNow)
-                        {
-                            result = false;
-                        }
+                        var timestamp = getEpochTimestamp();
+                        result = exp < timestamp;
                     }
                 }
             }
@@ -114,13 +111,13 @@ namespace DotNet.Push
             return result;
         }
 
-        private async Task<(bool success, string message)> pushJwtAPNsAsync(Uri requestUri, string accessToken, string payload, string apnsId, CancellationToken cancellationToken)
+        private async Task<(bool success, string message)> pushJwtAPNsAsync(Uri requestUri, string accessToken, string payload, string requestUuid, CancellationToken cancellationToken)
         {
             var result = (success: false, message: "ok");
 
             try
             {
-                using (var httpClient = new HttpClient())
+                using (var http_client = new HttpClient())
                 {
                     var request = new HttpRequestMessage
                     {
@@ -131,13 +128,13 @@ namespace DotNet.Push
                     };
 
                     request.Headers.Add("authorization", String.Format("bearer {0}", accessToken));
-                    request.Headers.Add("apns-id", apnsId);
+                    request.Headers.Add("apns-id", requestUuid);
                     request.Headers.Add("apns-expiration", "0");
                     request.Headers.Add("apns-priority", "10");
                     request.Headers.Add("apns-push-type", "alert");
                     request.Headers.Add("apns-topic", BundleAppId);
 
-                    var response = await httpClient.SendAsync(request, cancellationToken);
+                    var response = await http_client.SendAsync(request, cancellationToken);
                     if (response.StatusCode == System.Net.HttpStatusCode.OK)
                     {
                         var response_uuid = "";
