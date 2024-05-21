@@ -40,9 +40,11 @@ namespace DotNet.Push
             ExpireMinutes = expireMinutes;
         }
 
+        private static DateTimeOffset UnixEpoch = new DateTimeOffset(1970, 1, 1, 0, 0, 0, TimeSpan.Zero);
+
         private long getEpochTimestamp()
         {
-            return (long)Math.Round((DateTime.UtcNow - new DateTimeOffset(1970, 1, 1, 0, 0, 0, TimeSpan.Zero)).TotalSeconds);
+            return (long)Math.Round((DateTime.UtcNow - UnixEpoch).TotalSeconds);
         }
 
         private string getP8PrivateKey(string auth_key_path)
@@ -174,13 +176,13 @@ namespace DotNet.Push
         /// <summary>
         /// Token Based Authentication APNs push
         /// </summary>
-        /// <param name="device_token">device token</param>
+        /// <param name="deviceToken">device token</param>
         /// <param name="content">push content</param>
         /// <param name="badge">badge number</param>
         /// <param name="sound">sound file name</param>
-        public async Task<(bool success, string message)> JwtAPNsPushAsync(string device_token, object content, string apnsId, int badge, string sound, CancellationToken cancellationToken = default)
+        public async Task<(bool success, string message)> JwtAPNsPushAsync(string deviceToken, object content, string apnsId, int badge, string sound, CancellationToken cancellationToken = default)
         {
-            var requestUri = new Uri($"https://{HostServerUrl}:{HostPort}/3/device/{device_token}");
+            var requestUri = new Uri($"https://{HostServerUrl}:{HostPort}/3/device/{deviceToken}");
 
             var accessToken = JwtToken;
             {

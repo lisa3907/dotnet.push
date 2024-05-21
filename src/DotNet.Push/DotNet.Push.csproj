@@ -1,31 +1,31 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFrameworks>net5.0;net6.0;net7.0;net8.0</TargetFrameworks>
+		<TargetFramework>net8.0</TargetFramework>
 		<Title>DotNet Push Notification</Title>
 		<Description>Push Notification Service Library</Description>
-		<Copyright>Copyright OdinSoft Co., Ltd. 2015-2023</Copyright>
+		<Copyright>Copyright OdinSoft Co., Ltd. 2015-2024</Copyright>
 		<AssemblyTitle>DotNet.Push.Core</AssemblyTitle>
 		<Authors>SEONGAHN LEE</Authors>
 		<AssemblyName>DotNet.Push</AssemblyName>
-		
+
 		<PackageId>DotNet.Push</PackageId>
 		<PackageTags>sdk;odinsoft;push;apns</PackageTags>
 		<PackageIcon>dotnet.push.png</PackageIcon>
 		<PackageProjectUrl>https://github.com/lisa3907/DotnetPush</PackageProjectUrl>
-		
+
 		<GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
 		<GenerateAssemblyCompanyAttribute>false</GenerateAssemblyCompanyAttribute>
 		<GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>
 		<RootNamespace>DotNet.Push</RootNamespace>
 		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
 
-		<VersionPrefix>3.2.3</VersionPrefix>
-		<Version>3.2.3</Version>
-		<FileVersion>3.2.3.12</FileVersion>
-		<AssemblyVersion>3.2.3.12</AssemblyVersion>
+		<VersionPrefix>3.2.4</VersionPrefix>
+		<Version>3.2.4</Version>
+		<FileVersion>3.2.4.13</FileVersion>
+		<AssemblyVersion>3.2.4.13</AssemblyVersion>
 
-		<PackageReleaseNotes>update to core 7.0 &amp; nuget update</PackageReleaseNotes>
+		<PackageReleaseNotes>update to core 8.0 &amp; nuget update</PackageReleaseNotes>
 		<PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
 		<PackageReadmeFile>README.md</PackageReadmeFile>
 	</PropertyGroup>

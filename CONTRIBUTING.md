@@ -8,4 +8,4 @@
 
 home-page: http://www.odinsoft.co.kr
 
-e-mail: help@odinsoft.co.kr
+e-mail: lisa@odinsoft.co.kr
