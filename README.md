@@ -8,8 +8,6 @@
 ## JwtAPNs for .net coreapp:
 
 ```
-Visual Studio community 2019
-
 [WinHttpHandler](https://www.microsoft.com/net)  
 [jose-jwt](https://github.com/dvsekhvalnov/jose-jwt)  
 [Josn.Net](http://www.newtonsoft.com/json)
@@ -23,15 +21,18 @@ Visual Studio community 2019
 
 > [How to make the .net HttpClient use http 2.0?](https://github.com/lisa3907/DotnetPush/blob/master/http2handler.md)
 
+
 ## Tools
 
 - Visual Studio community 2022 Version 17.9.7
 
-- .net core 2.0
+- .net core 8.0
+
 
 ## License
 
 Read [LICENSE](LICENSE)
+
 
 ## Donations
 
@@ -41,10 +42,11 @@ Since I spent several days developing and testing this kit I would appreciate an
 
 - ETH: 0x556E7EdbcCd669a42f00c1Df53D550C00814B0e3
 
+
 ## History
 
 ```
-2024-05-21: update to .net core 8.0 & Migrate from legacy FCM APIs to HTTP v1
+2024-05-24: update to .net core 8.0 & Migrate from legacy FCM APIs to HTTP v1
 
 2023-11-15: update to .net core 7.0
 
@@ -56,6 +58,7 @@ Since I spent several days developing and testing this kit I would appreciate an
 
 2018-07-10: upgrade .net core 2.1 & downgrade net462
 ```
+
 
 ## Contact
 
