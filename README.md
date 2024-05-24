@@ -44,7 +44,7 @@ Since I spent several days developing and testing this kit I would appreciate an
 ## History
 
 ```
-2024-05-21: update to .net core 8.0
+2024-05-21: update to .net core 8.0 & Migrate from legacy FCM APIs to HTTP v1
 
 2023-11-15: update to .net core 7.0
 
