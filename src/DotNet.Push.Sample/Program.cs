@@ -29,7 +29,7 @@ namespace DotNet.Push.Sample
             else if (_test_phone == "IA2")
             {
                 var json = File.ReadAllText(@"path/to/serviceAccountKey.json");
-                var _fcm = new PushNotifyFCMV1("<project-id>", "<server-id>", "<alarm-tag>", json);
+                var _fcm = new PushNotifyFCMV1(json);
 
                 var _result = await _fcm.SendNotificationAsync("<device-token>", "<priority>", "<title>", "<click-action>", "<message>", 1, "<icon-name>", "<color>");
 
@@ -48,7 +48,7 @@ namespace DotNet.Push.Sample
             else if (_test_phone == "AF2")
             {
                 var json = File.ReadAllText(@"path/to/serviceAccountKey.json");
-                var _fcm = new PushNotifyFCMV1("<project-id>", "<server-id>", "<alarm-tag>", json);
+                var _fcm = new PushNotifyFCMV1(json);
 
                 var _result = await _fcm.SendNotificationAsync("<device-token>", "<priority>", "<title>", "<click-action>", "<message>", 1, "<icon-name>", "<color>");
 

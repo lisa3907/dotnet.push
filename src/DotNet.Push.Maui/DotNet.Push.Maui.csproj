@@ -25,12 +25,6 @@
 
 	</PropertyGroup>
 
-	<PropertyGroup Condition="'$(TargetFramework)'=='net8.0-ios'">
-		<CodesignKey>Apple Development: SEONGAHN LEE (1234567890)</CodesignKey>
-		<CodesignProvision>Dotnet Push for Development</CodesignProvision>
-		<ProvisioningType>manual</ProvisioningType>
-	</PropertyGroup>
-
 	<ItemGroup>
 		<BundleResource Include="Platforms/iOS/Entitlements.plist">
 			<CodesignEntitlements>Platforms/iOS/Entitlements.plist</CodesignEntitlements>
