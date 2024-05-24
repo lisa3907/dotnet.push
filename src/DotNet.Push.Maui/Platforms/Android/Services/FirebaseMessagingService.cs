@@ -5,7 +5,7 @@ using Firebase.Messaging;
 
 namespace DotNet.Push.Maui.Platforms.Android.Services;
 
-[Service(Name = "kr.co.odinsoft.push.MyFirebaseMessagingService")]
+[Service(Name = "com.example.yourapp.MyFirebaseMessagingService")]
 [IntentFilter(new[] { "com.google.firebase.MESSAGING_EVENT" })]
 public class MyFirebaseMessagingService : FirebaseMessagingService
 {
